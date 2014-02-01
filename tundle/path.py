@@ -1,13 +1,13 @@
 # -*- coding: utf-8 -*-
 
-"""
-This module contains all the paths for alls this project directories, that
+"""This module contains all the paths for alls this project directories, that
 we created dynamically.
 
 All paths are absolute, without symlink and in unicode.
 
 We also add the 'apps' directory to the PYTHON PATH, which
 will make the imports much  easier.
+
 """
 
 # This will force all string to be unicode strings, even if we don't
