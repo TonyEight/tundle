@@ -1,13 +1,13 @@
 # -*- coding: utf-8 -*-
 
-"""
-Base settings for tundle project.
+"""Base settings for tundle project.
 
 For more information on this file, see
 https://docs.djangoproject.com/en/1.6/topics/settings/
 
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/1.6/ref/settings/
+
 """
 
 # This will force all string to be unicode strings, even if we don't
@@ -36,12 +36,18 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = (
+    # Django apps
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    # Third-party apps
+    'south',
+    'timedelta',
+    # Tundle apps
+    'tickets',
 )
 
 MIDDLEWARE_CLASSES = (
