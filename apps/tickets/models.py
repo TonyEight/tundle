@@ -173,21 +173,23 @@ class Ticket(models.Model):
                                  null=True, blank=True)
     deadline = models.DateTimeField(verbose_name=_('deadline'), null=True, 
                                     blank=True)
-    copy_to = models.ManyToManyField(User, verbose_name=_('copy_to'), 
+    copy_to = models.ManyToManyField(User, verbose_name=_('copy to'), 
                                      related_name='followed_tickets', 
                                      null=True, blank=True)
-    planned_start = models.DateTimeField(verbose_name=_('planned_start'), 
+    planned_start = models.DateTimeField(verbose_name=_('planned start'), 
                                          null=True, blank=True)
-    planned_end = models.DateTimeField(verbose_name=_('planned_end'), 
+    planned_end = models.DateTimeField(verbose_name=_('planned end'), 
                                        null=True, blank=True)
     planned_workload = timedelta.fields.TimedeltaField(
-                                        verbose_name=_('planned_workload'),
+                                        verbose_name=_('planned workload'),
                                         null=True, blank=True)
-    related_tickets = models.ManyToManyField('self', 
-                                        verbose_name=_('related_tickets'),
-                                        null=True, blank=True)
-    parent_ticket = models.ForeignKey('self', 
-                                      verbose_name=_('parent_ticket'),
+    is_linked_to = models.ForeignKey('self',
+                                     related_name='related_tickets', 
+                                     verbose_name=_('related ticket'),
+                                     null=True, blank=True)
+    parent_ticket = models.ForeignKey('self',
+                                      related_name='children',
+                                      verbose_name=_('parent ticket'),
                                       null=True, blank=True)
     created_at = models.DateTimeField(auto_now_add=True, 
                                       verbose_name=_('created at'))
