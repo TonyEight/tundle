@@ -201,11 +201,24 @@ class Ticket(models.Model):
         """This method simply returns a human readable value for the 
         Python object representing our model.
 
-        Here it returns the ticket number which is no other than 
+        Here it just returns the value of the property ticket_label 
+        with a label 'ticket ' just before.
+
+        """
+        return _('ticket %(number)d' % {'number': self.ticket_number})
+
+    def _get_ticket_number(self):
+        """Returns the ticket number which is no other than 
         its own primary_key.
 
         """
-        return _('ticket #%(ticket_id)d' % {'ticket_id': self.pk})
+        return _('#%(ticket_id)d' % {'ticket_id': self.pk})
+
+    # Adds a short description to this method for the Admin change list page.
+    _get_ticket_number.short_description = 'Ticket number'
+    # Creates the property ticket_number which exposes the result of
+    # the _get_ticket_number method
+    ticket_number = property(_get_ticket_number)
 
     def clean(self):
         """Validates the ticket fields.
