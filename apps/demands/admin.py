@@ -9,7 +9,7 @@ from django.contrib import admin
 from django.utils.translation import ugettext as _
 
 # Tundle modules imports
-from tickets.models import (
+from demands.models import (
     Severity,
     Priority,
     Status,

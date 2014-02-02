@@ -47,7 +47,7 @@ INSTALLED_APPS = (
     'south',
     'timedelta',
     # Tundle apps
-    'tickets',
+    'demands',
 )
 
 MIDDLEWARE_CLASSES = (
