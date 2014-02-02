@@ -143,7 +143,7 @@ class TicketAdmin(admin.ModelAdmin):
     """Activates tickets management from the Admin Interface."""
     # Explicitely set all fields available by declaring the 
     # read-only fields
-    readonly_fields = ('created_at', 'updated_at')
+    readonly_fields = ('created_at', 'updated_at',)
     
     # Set fields order and fieldsets
     fieldsets = (
