@@ -8,6 +8,7 @@ from __future__ import unicode_literals
 from django.db import models
 from django.contrib.auth.models import User
 from django.utils.translation import ugettext as _
+from django.core.exceptions import ValidationError
 
 # Third-party modules imports
 import timedelta
