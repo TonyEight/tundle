@@ -48,6 +48,7 @@ INSTALLED_APPS = (
     'timedelta',
     # Tundle apps
     'demands',
+    'attachments',
 )
 
 MIDDLEWARE_CLASSES = (
