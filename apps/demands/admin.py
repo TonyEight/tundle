@@ -147,7 +147,7 @@ class TicketAdmin(admin.ModelAdmin):
     
     # Set fields order and fieldsets
     fieldsets = (
-        ('General', {
+        (_('General'), {
             'classes': ('wide', 'extrapretty'),
             'fields': (
                 'title', 
@@ -157,7 +157,7 @@ class TicketAdmin(admin.ModelAdmin):
                 ('created_at', 'updated_at',),
             )
         }),
-        ('Is about', {
+        (_('Is about'), {
             'classes': ('wide', 'extrapretty'),
             'fields': (
                 ('domain', 'subdomain',),
@@ -165,14 +165,14 @@ class TicketAdmin(admin.ModelAdmin):
                 'is_linked_to',
             )
         }),
-        ('Request', {
+        (_('Request'), {
             'classes': ('wide', 'extrapretty'),
             'fields': (
                 ('severity', 'deadline',),
                 'copy_to',
             )
         }),
-        ('Response', {
+        (_('Response'), {
             'classes': ('wide', 'extrapretty'),
             'fields': (
                 'planned_workload', 
