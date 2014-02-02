@@ -92,6 +92,12 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.6/howto/static-files/
 
 STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(ROOT_DIR, 'assets/static')
+
+# Users-uploaded files
+
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(ROOT_DIR, 'assets/media')
 
 # Django uses the Python log standard facility, and this dictionary is passed
 # to dictConfig (http://docs.python.org/2/library/logging.config.html).
