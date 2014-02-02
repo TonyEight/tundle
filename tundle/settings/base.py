@@ -1,4 +1,4 @@
-# -*- coding: utf-8 -*-
+# coding=utf-8
 
 """Base settings for tundle project.
 
@@ -152,3 +152,64 @@ LOGGING = {
         },
     }
 }
+
+# Attachments app settings
+# List of allowed types (MIME types).
+ATTACHMENT_CONTENT_TYPES = [
+    'application/pdf', 
+    'application/zip',
+    'application/vnd.oasis.opendocument.text',
+    'application/vnd.oasis.opendocument.spreadsheet',
+    'application/vnd.oasis.opendocument.presentation',
+    'application/vnd.oasis.opendocument.graphics',
+    'text/csv',
+    'text/html',
+    'text/plain',
+    'application/msword',
+    'application/msword',
+    'application/vnd.openxmlformats-officedocument'
+    '.wordprocessingml.document',
+    'application/vnd.openxmlformats-officedocument'
+    '.wordprocessingml.template',
+    'application/vnd.ms-word.document.macroEnabled.12',
+    'application/vnd.ms-word.template.macroEnabled.12',
+    'application/vnd.ms-excel',
+    'application/vnd.openxmlformats-officedocument'
+    '.spreadsheetml.sheet',
+    'application/vnd.openxmlformats-officedocument'
+    '.spreadsheetml.template',
+    'application/vnd.ms-excel.sheet.macroEnabled.12',
+    'application/vnd.ms-excel.template.macroEnabled.12',
+    'application/vnd.ms-excel.addin.macroEnabled.12',
+    'application/vnd.ms-excel.sheet.binary.macroEnabled.12',
+    'application/vnd.ms-powerpoint',
+    'application/vnd.openxmlformats-officedocument'
+    '.presentationml.presentation',
+    'application/vnd.openxmlformats-officedocument'
+    '.presentationml.template',
+    'application/vnd.openxmlformats-officedocument'
+    '.presentationml.slideshow',
+    'application/vnd.ms-powerpoint.addin.macroEnabled.12',
+    'application/vnd.ms-powerpoint.presentation.macroEnabled.12',
+    'application/vnd.ms-powerpoint.template.macroEnabled.12',
+    'application/vnd.ms-powerpoint.slideshow.macroEnabled.12',
+    'image/gif',
+    'image/jpeg',
+    'image/pjpeg',
+    'image/png',
+    'image/x-png',
+    'image/tiff',
+    'image/svg+xml',
+]
+
+# This setting fixes the max size of an attachment
+# Here are some size examples
+# 2.5MB - 2621440
+# 5MB - 5242880
+# 10MB - 10485760
+# 20MB - 20971520
+# 50MB - 52428800
+# 100MB 104857600
+# 250MB - 214958080
+# 500MB - 429916160
+ATTACHMENT_MAX_SIZE = 10485760

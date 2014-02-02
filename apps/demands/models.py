@@ -1,4 +1,4 @@
-# -*- coding: utf-8 -*-
+# coding=utf-8
 
 # This will force all string to be unicode strings, even if we don't
 # set the 'u'

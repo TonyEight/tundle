@@ -1,4 +1,4 @@
-# -*- coding: utf-8 -*-
+# coding=utf-8
 
 """This module contains all the paths for alls this project directories, that
 we created dynamically.
