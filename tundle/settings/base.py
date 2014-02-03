@@ -46,6 +46,7 @@ INSTALLED_APPS = (
     # Third-party apps
     'south',
     'timedelta',
+    'pagedown',
     # Tundle apps
     'demands',
     'attachments',

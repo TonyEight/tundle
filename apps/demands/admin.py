@@ -7,6 +7,10 @@ from __future__ import unicode_literals
 # Django modules imports
 from django.contrib import admin
 from django.utils.translation import ugettext as _
+from django.db import models
+
+# Third-party modules imports
+from pagedown.widgets import AdminPagedownWidget
 
 # Tundle modules imports
 from demands.models import (
@@ -226,6 +230,12 @@ class TicketAdmin(admin.ModelAdmin):
         'title',
         'description',
     )
+
+    # Set PageDown editor on all TextField
+    # In fact, this only concerns the description field
+    formfield_overrides = {
+        models.TextField: {'widget': AdminPagedownWidget },
+    }
 
 # Registers all models
 admin.site.register(Severity, SeverityAdmin)
