@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    {# This block is used to add a title to the page, displayed at the top of the browser tab. #}
+    <title>{% block page-title %}{% endblock %} | Tundle</title>
+
+    <!-- CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    {# This block is used to add CSS files declarations. #}
+    {% block css-files %}{% endblock %}
+    {# This block is used to add inline CSS declarations. #}
+    {% block inline-css %}{% endblock %}
+    <!-- End of CSS -->
+
+    <!-- JavaScript -->
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <!-- End of JavaScript -->
+  </head>
+  <body>
+    <!-- Header -->
+    <header class="navbar navbar-default" role="banner">
+      <!-- Header Content -->
+      <div class="container-fluid">
+        <!-- Title -->
+        <div class="navbar-header">
+          <a class="navbar-brand" href="#">
+            <!-- Application name on big screens -->
+            <span class="visible-lg visible-md">Tundle</span>
+            <!-- Application badge on small screens -->
+            <span class="lead badge visible-sm visible-xs">T</span>
+          </a>
+        </div>
+        <!-- End of Title -->
+        <!-- Header Menu -->
+        {# If the user is logged, the user menu is displayed, else, the login link is displayed. #}
+        <ul class="nav navbar-nav navbar-right">
+          {% if user.is_authenticated %}
+          <!-- User Menu -->
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+              {% user.username %} <b class="caret"></b>
+            </a>
+            <ul class="dropdown-menu">
+              <li><a href="#">My Account</a></li>
+              <li><a href="#">Disconnect</a></li>
+            </ul>
+          </li>
+          <!-- End of User Menu -->
+          {% else %}
+          <!-- Login Link -->
+          <li><a href="#">Sign Up</a></li>
+          <!-- End of Login Link -->
+          {% endif %}
+          </ul>
+        <!-- End of Header Menu -->
+      </div>
+      <!-- End of Header Content -->
+    </header>
+    <!-- End of Header -->
+
+    <!-- NavBar -->
+    <nav class="navbar navbar-default" role="navigation">
+      <!-- NavBar Content -->
+      <div class="container-fluid">
+        <!-- Responsive Toggle Button -->
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navigation-menu">
+            <span class="sr-only">Menu</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+        </div>
+        <!-- End of Responsive Toggle Button -->
+        <!-- Navigation Menu -->
+        <div class="collapse navbar-collapse" id="navigation-menu">
+          <ul class="nav navbar-nav">
+            <li><a href="#">Link</a></li>
+            <li><a href="#">Link</a></li>
+          </ul>
+        </div>
+        <!-- End of Navigation Menu -->
+      </div>
+      <!-- End of NavBar Content -->
+    </nav>
+    <!-- End of NavBar -->
+
+    <!-- Content Container -->
+    <div id="content" class="container-fluid">
+      <!-- Two-Columned Layout -->
+      <div class="row">
+        <!-- Main Content -->
+        <div class="col-xs-12 col-xs-push-12 col-sm-8 col-md-10">
+        </div>
+        <!-- End of Main Content -->
+        <!-- Menu -->
+        <div class="col-xs-12 col-xs-pull-12 col-sm-4 col-md-2">
+        </div>
+        <!-- End of Menu -->
+      </div>
+      <!-- End Two-Columned Layout -->
+    </div>
+    <!-- End of Content Container -->
+
+    <!-- Footer -->
+    <footer>
+      <!-- Footer Content -->
+      <div class="container-fluid">
+        <!-- Two-Columned Layout -->
+        <div class="row">
+          <!-- Disclaimer -->
+          <div class="col-xs-12 col-xs-push-12 col-sm-6 col-md-8">
+          </div>
+          <!-- End of Disclaimer -->
+          <!-- Logo & Link -->
+          <div class="col-xs-12 col-xs-pull-12 col-sm-6 col-md-4">
+          </div>
+          <!-- End of Logo & Link -->
+        </div>
+        <!-- End Two-Columned Layout -->
+      </div>
+      <!-- End of Footer Content -->
+    </div>
+    <!-- End of Footer -->
+
+    <!-- JavaScript -->
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://code.jquery.com/jquery.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="js/bootstrap.min.js"></script>
+    <!-- End of JavaScript -->
+  </body>
+</html>
