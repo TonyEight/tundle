@@ -50,6 +50,7 @@ INSTALLED_APPS = (
     # Tundle apps
     'demands',
     'attachments',
+    'frontend',
 )
 
 MIDDLEWARE_CLASSES = (

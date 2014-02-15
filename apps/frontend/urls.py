@@ -6,14 +6,11 @@ from __future__ import unicode_literals
 
 # Django modules imports
 from django.conf.urls import patterns, include, url
-from django.contrib import admin
 
-admin.autodiscover()
+# Tundle modules imports
+from frontend.views import DashboardView
 
 urlpatterns = patterns('',
-    # Frontend URLs
-    url(r'^', include('frontend.urls')),
-
-    # Admin URLs
-    url(r'^admin/', include(admin.site.urls)),
+    # Dashboard
+    url(r'^$', DashboardView.as_view(), name='dashboard'),
 )

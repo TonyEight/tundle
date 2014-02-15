@@ -5,16 +5,20 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="{% static "frontend/img/Tundle_Favicon.png" %}" rel="shortcut icon">
     {# This block is used to add a title to the page, displayed at the top of the browser tab. #}
-    <title>{% block page-title %}{% endblock %} | Tundle</title>
+    <title>{% block page-title %}{% endblock %} · Tundle</title>
 
     <!-- CSS -->
     <link href="{% static "frontend/css/bootstrap.min.css" %}" rel="stylesheet">
+    <link href="{% static "frontend/css/bootstrap-theme.min.css" %}" rel="stylesheet">
     <link href="{% static "frontend/css/tundle.css" %}" rel="stylesheet">
     {# This block is used to add CSS files declarations. #}
     {% block css-files %}{% endblock %}
-    {# This block is used to add inline CSS declarations. #}
-    {% block inline-css %}{% endblock %}
+    <style type="text/css">
+      {# This block is used to add inline CSS declarations. #}
+      {% block inline-css %}{% endblock %}
+    </style>
     <!-- End of CSS -->
 
     <!-- JavaScript -->
@@ -28,87 +32,94 @@
   </head>
   <body>
     <!-- Header -->
-    <header class="navbar navbar-default" role="banner">
+    <header class="navbar navbar-default navbar-static-top" id="header" role="banner">
       <!-- Header Content -->
       <div class="container-fluid">
         <!-- Title -->
         <div class="navbar-header">
-          <a class="navbar-brand" href="#">
-            <!-- Application name on big screens -->
-            <span class="visible-lg visible-md">Tundle</span>
-            <!-- Application badge on small screens -->
-            <span class="lead badge visible-sm visible-xs">T</span>
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#header-menu">
+            <span class="sr-only">Menu</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand hidden-md hidden-lg" href="#" title="Tundle" id="header-logo">
+            <img src="{% static "frontend/img/Tundle_Logo.png" %}">undle
+          </a>
+          <a class="navbar-brand hidden-xs hidden-sm" href="#" title="Tundle" id="header-logo-full">
+            <img src="{% static "frontend/img/Tundle_LogoFull.png" %}">
           </a>
         </div>
         <!-- End of Title -->
         <!-- Header Menu -->
-        {# If the user is logged, the user menu is displayed, else, the login link is displayed. #}
-        <ul class="nav navbar-nav navbar-right">
-          {% if user.is_authenticated %}
-          <!-- User Menu -->
-          <li class="dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-              {% user.username %} <b class="caret"></b>
-            </a>
-            <ul class="dropdown-menu">
-              <li><a href="#">My Account</a></li>
-              <li><a href="#">Disconnect</a></li>
-            </ul>
-          </li>
-          <!-- End of User Menu -->
-          {% else %}
-          <!-- Login Link -->
-          <li><a href="#">Sign Up</a></li>
-          <!-- End of Login Link -->
-          {% endif %}
+        <nav class="collapse navbar-collapse" id="header-menu" role="navigation">
+          <!-- Navigation Menu -->
+          <ul class="nav navbar-nav navbar-left" id="navigation-menu">
+            {% block navigation-menu %}{% endblock %}
           </ul>
+          <!-- End of Navigation Menu -->
+          <!-- User Block -->
+          {# If the user is logged, the user menu is displayed, else, the login link is displayed. #}
+          <ul class="nav navbar-nav navbar-right" id="user-block">
+            {% if user.is_authenticated %}
+            <!-- User Menu -->
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                {{ user.username }} <b class="caret"></b>
+              </a>
+              <ul class="dropdown-menu">
+                <li><a href="#">My Account</a></li>
+                <li><a href="#">Disconnect</a></li>
+              </ul>
+            </li>
+            <!-- End of User Menu -->
+            {% else %}
+            <!-- Login Link -->
+            <li><a href="#">Sign In</a></li>
+            <!-- End of Login Link -->
+            {% endif %}
+          </ul>
+          <!-- End of User Block -->
+        </nav>
         <!-- End of Header Menu -->
       </div>
       <!-- End of Header Content -->
     </header>
     <!-- End of Header -->
 
-    <!-- NavBar -->
-    <nav class="navbar navbar-default" role="navigation">
-      <!-- NavBar Content -->
-      <div class="container-fluid">
-        <!-- Responsive Toggle Button -->
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navigation-menu">
-            <span class="sr-only">Menu</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-        </div>
-        <!-- End of Responsive Toggle Button -->
-        <!-- Navigation Menu -->
-        <div class="collapse navbar-collapse" id="navigation-menu">
-          <ul class="nav navbar-nav">
-            <li><a href="#">Link</a></li>
-            <li><a href="#">Link</a></li>
-          </ul>
-        </div>
-        <!-- End of Navigation Menu -->
-      </div>
-      <!-- End of NavBar Content -->
-    </nav>
-    <!-- End of NavBar -->
-
     <!-- Content Container -->
-    <div id="content" class="container-fluid">
+    <div class="container-fluid" id="content">
       <!-- Two-Columned Layout -->
       <div class="row">
-        <!-- Main Content -->
-        <div class="col-xs-12 col-xs-push-12 col-sm-8 col-md-10">
-          {% block main-content %}{% endblock %}
-        </div>
-        <!-- End of Main Content -->
         <!-- Side Menu -->
-        <div class="col-xs-12 col-xs-pull-12 col-sm-4 col-md-2">
-          {% block side-menu %}{% endblock %}
+        <div class="navbar navbar-default col-xs-12 col-sm-4 col-md-2 col-md-push-10" id="side-menu">
+          <div class="navbar-header" id="side-menu-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#side-menu-content">
+              <span class="sr-only">SubMenu</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            <p class="navbar-text hidden-md hidden-lg" id="side-menu-title">
+              {% block mobile-side-menu-title %}{% endblock %}
+            </p>
+          </div>
+          <!-- Side Menu Content -->
+          <div class="collapse in" id="side-menu-content">
+            <ul class="nav nav-pills nav-stacked">
+              {% block side-menu-content %}{% endblock %}
+            </ul>
+          </div>
+          <!-- End of Side Menu Content -->
         </div>
         <!-- End of Side Menu -->
+        <!-- Main Content -->
+        <div class="col-xs-12 col-sm-8 col-md-10 col-md-pull-2" id="main-content">
+          <div id="main-content-inner">
+            {% block main-content %}{% endblock %}
+          </div>
+        </div>
+        <!-- End of Main Content -->
       </div>
       <!-- End Two-Columned Layout -->
     </div>
@@ -120,41 +131,35 @@
       <div class="container-fluid">
         <!-- Two-Columned Layout -->
         <div class="row">
-          <!-- Credit -->
-          <div class="col-xs-12 col-xs-push-12 col-sm-6 col-md-8" id="copyright">
-            <p id="copyright-content">
-              {% comment %}
-                The copyright is permanent, starting from 2014. 
-                If the current year is greater than 2014, we display it.
-              {% endcomment %}
-              {% with now "Y" as current_year %}
-              &copy; 2014 {% if current_year != "2014" %} - {{ current_year }}{% endif %}
-              {% endwith %}
-               - Graciously served under MIT License.
-            </p>
-          </div>
-          <!-- End of Credit -->
           <!-- Logo & Link -->
-          <div class="col-xs-12 col-xs-pull-12 col-sm-6 col-md-4" id="footer-logo">
-            <p class="lead" id="footer-logo-content">
-              <a href="https://github.com/TonyEight/tundle">
-                <span class="badge">T</span>undle
-              </a>
+          <div class="text-center" id="footer-logo">
+            <p id="footer-logo-content">
+              <img src="{% static "frontend/img/Tundle_Favicon.png" %}">
+              <a href="https://github.com/TonyEight/tundle">Tundle</a>
             </p>
           </div>
           <!-- End of Logo & Link -->
+          <!-- Credit -->
+          <div class="text-center" id="copyright">
+            <p id="copyright-content">
+              &copy; 2014 - 2016. Graciously served under MIT License.
+            </p>
+          </div>
+          <!-- End of Credit -->
         </div>
         <!-- End Two-Columned Layout -->
       </div>
       <!-- End of Footer Content -->
-    </div>
+    </footer>
     <!-- End of Footer -->
 
     <!-- JavaScript -->
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://code.jquery.com/jquery.js"></script>
-    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <!-- Bootstrap JS file(s) -->
     <script src="{% static "frontend/js/bootstrap.min.js" %}"></script>
+    <!-- Tundle JS file(s) -->
+    <script src="{% static "frontend/js/tundle.js" %}"></script>
     <!-- End of JavaScript -->
   </body>
 </html>
